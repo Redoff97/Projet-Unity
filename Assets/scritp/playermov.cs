@@ -34,7 +34,9 @@ public class playermov : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal"); // -1 1
         float vertical = Input.GetAxisRaw("Vertical"); // -1 1 
-        velocity = camTransform.right * horizontal + camTransform.forward * vertical;
+        Vector3 camF = camTransform.forward;
+        camF.y = 0;
+        velocity = camTransform.right * horizontal + camF * vertical;
         velocity = velocity.normalized * vitesse;
 
         Debug.Log(IsOnTheGround());
@@ -48,8 +50,7 @@ public class playermov : MonoBehaviour
 
 
 
-        if (rigi.velocity.magnitude > .1f && Mathf.Abs(rigi.velocity.y) < .1f)
-            visuelPersonnage.forward = rigi.velocity;
+       
     }
 
 

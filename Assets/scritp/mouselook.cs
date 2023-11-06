@@ -9,12 +9,13 @@ public class mouselook : MonoBehaviour
 
    
     private float xmousespos;
+    private float ymousespos;
     private float smoothedmousepos;
-
     private float currentLookingPos;
+    
 
-  
-     private void Start()
+
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -30,17 +31,21 @@ public class mouselook : MonoBehaviour
     void GetInput()
     {
         xmousespos = Input.GetAxisRaw("Mouse X");
+        ymousespos = Input.GetAxisRaw("Mouse Y");
         Debug.Log(xmousespos);
     }
     void ModifyInput()
     {
         xmousespos *= sensitivity * smoothing;
         smoothedmousepos = Mathf.Lerp(smoothedmousepos, xmousespos, 1f / smoothing);
+       
     }
     void MovePlayer()
     {
         currentLookingPos += smoothedmousepos;
-        transform.localRotation = Quaternion.AngleAxis(currentLookingPos, transform.up);
+        transform.localRotation = Quaternion.AngleAxis(currentLookingPos, Vector3.up);
+       
+        
     }
 
     
