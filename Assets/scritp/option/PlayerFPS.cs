@@ -19,6 +19,8 @@ public class PlayerFPS : MonoBehaviour
     //Vitesse de saut
     public float jumpSpeed = 8f;
 
+    public Surface sol;
+
     //Gravité
     float gravity = 20f;
 
@@ -45,6 +47,11 @@ public class PlayerFPS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit info;
+        if (Physics.Raycast(transform.position, -Vector3.up, out info, 500))
+        {
+            sol = info.collider.gameObject.GetComponent<Surface>();
+        }
         //Calcule les directions
         //forward = avant/arrière
         //right = droite/gauche
@@ -79,14 +86,14 @@ public class PlayerFPS : MonoBehaviour
         if (isRunning)
         {
             //Multiplie la vitesse par la vitesse de course
-            speedX = speedX * runningSpeed;
-            speedZ = speedZ * runningSpeed;
+            speedX = speedX * sol.runningSpeed;
+            speedZ = speedZ * sol.runningSpeed;
         }
         else
         {
             //Multiplie la vitesse par la vitesse de marche
-            speedX = speedX * walkingSpeed;
-            speedZ = speedZ * walkingSpeed;
+            speedX = speedX * sol.walkingSpeed;
+            speedZ = speedZ * sol.walkingSpeed;
         }
 
 
@@ -102,6 +109,7 @@ public class PlayerFPS : MonoBehaviour
         {
 
             moveDirection.y = jumpSpeed;
+            moveDirection.y = sol.jumpSpeed;
         }
         else
         {

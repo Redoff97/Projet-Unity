@@ -20,6 +20,7 @@ public class ReceiveDamage : MonoBehaviour
 
     //Temps depuis le dernier dégât
     private float timeSinceLastHit = 0.0f;
+    public float MadeDamage;
 
     private void Start()
     {
@@ -59,6 +60,7 @@ public class ReceiveDamage : MonoBehaviour
 
         //Applique les dommages aux points de vies actuels
         hitPoint -= damage;
+        MadeDamage = maxHitPoint - hitPoint;
 
         //S'il reste des points de vie
         if (hitPoint > 0)
