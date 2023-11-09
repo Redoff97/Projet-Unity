@@ -7,6 +7,7 @@ public class gun : MonoBehaviour
     public float range = 20f;
     public float verticalRange = 20f;
     private BoxCollider gunTrigger;
+
     void Start()
     {
         gunTrigger = GetComponent<BoxCollider>();
@@ -19,8 +20,4 @@ public class gun : MonoBehaviour
     {
 
     }
-    private void OnTriggerExit(Collider other)
-    {
-      
-    }
-}
+}   

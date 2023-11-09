@@ -9,7 +9,7 @@ public class mouselook : MonoBehaviour
 
    
     private float xmousespos;
-    private float ymousespos;
+    
     private float smoothedmousepos;
     private float currentLookingPos;
     
@@ -31,7 +31,7 @@ public class mouselook : MonoBehaviour
     void GetInput()
     {
         xmousespos = Input.GetAxisRaw("Mouse X");
-        ymousespos = Input.GetAxisRaw("Mouse Y");
+        
         Debug.Log(xmousespos);
     }
     void ModifyInput()
